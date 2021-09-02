@@ -142,6 +142,9 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">driver.find_element_by_class_name(&#x27;android.widget.EditText&#x27;).send_keys(&#x27;xxx&#x27;)</span><br><span class="line">driver.find_element_by_class_name(&#x27;android.widget.Button&#x27;).click()</span><br></pre></td></tr></table></figure>
 
 <p>\4) List定位</p>
+<p>​        List定位首先是使用”<strong>find_elements_by_XX</strong>“获取一组相同的class属性的元素，然后使用数组下标来区分标记不同元素进行相关操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">driver.find_element_by_id(&#x27;com.tal.kaoyan:id/login_register_text&#x27;).click()</span><br><span class="line"></span><br><span class="line">driver.find_element_by_id(&#x27;com.tal.kaoyan:id/activity_register_userheader&#x27;).click()</span><br><span class="line"></span><br><span class="line">images=driver.find_elements_by_id(&#x27;com.tal.kaoyan:id/item_image&#x27;)</span><br><span class="line"></span><br><span class="line">images[2].click()</span><br><span class="line"></span><br><span class="line">driver.find_element_by_id(&#x27;com.tal.kaoyan:id/save&#x27;).click()</span><br></pre></td></tr></table></figure>
+
 <p>\5) 相对定位</p>
 <p>​        先找到该元素的对应属性的父节点，然后基于父节点进行元素定位。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">driver.find_element_by_id(&#x27;com.tal.kaoyan:id/login_register_text&#x27;).click()</span><br><span class="line">root_element=driver.find_element_by_id(&#x27;com.tal.kaoyan:id/activity_register_parentlayout&#x27;)</span><br><span class="line">root_element.find_element_by_class_name(&#x27;android.widget.ImageView&#x27;).click()</span><br></pre></td></tr></table></figure>
@@ -160,6 +163,10 @@
 
 <p>\7) H5页面元素定位</p>
 <p>\8) Uiautomator定位</p>
+<h5 id="EXTRA"><a href="#EXTRA" class="headerlink" title="EXTRA"></a><strong>EXTRA</strong></h5><p>滑动效果：</p>
+<p>swipe()方法的参数说明：<br>start_x：起始横坐标<br>start_y：起始纵坐标<br>end_x：结束时横坐标<br>end_y：结束时纵坐标<br>duration：滑动持续时间，单位毫秒，默认None（一般设置500-1000毫秒比较合适）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">:Args:</span><br><span class="line">         - start_x - x-coordinate at which to start</span><br><span class="line">         - start_y - y-coordinate at which to start</span><br><span class="line">         - end_x - x-coordinate at which to stop</span><br><span class="line">         - end_y - y-coordinate at which to stop</span><br><span class="line">         - duration - (optional) time to take the swipe, in ms.</span><br><span class="line"></span><br><span class="line">        :Usage:</span><br><span class="line">            driver.swipe(100, 100, 100, 400)</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
