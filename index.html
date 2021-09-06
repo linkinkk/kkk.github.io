@@ -71,6 +71,66 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-yaml" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/06/yaml/" class="article-date">
+  <time class="dt-published" datetime="2021-09-06T07:08:57.000Z" itemprop="datePublished">2021-09-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/06/yaml/">yaml</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、yaml概述"><a href="#一、yaml概述" class="headerlink" title="一、yaml概述"></a>一、yaml概述</h2><h4 id="1、yaml简介"><a href="#1、yaml简介" class="headerlink" title="1、yaml简介"></a>1、yaml简介</h4><p>YAML 是专门用来写配置文件的语言，非常简洁和强大，远比 JSON 格式方便。比如同一段数据Josn和Yaml的表示分别如下：</p>
+<p><strong>Jason</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; name: &#x27;Tom Smith&#x27;,age: 37,spouse: &#123; name: &#x27;Jane Smith&#x27;, age: 25 &#125;,children: [ &#123; name: &#x27;Jimmy Smith&#x27;, age: 15 &#125;,&#123; name: &#x27;Jenny Smith&#x27;, age: 12 &#125; ] &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>yaml</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">name: Tom Smith</span><br><span class="line">age: 37</span><br><span class="line">spouse:</span><br><span class="line">    name: Jane Smith</span><br><span class="line">    age: 25</span><br><span class="line">children:</span><br><span class="line">  name: Jimmy Smith</span><br><span class="line">   age: 15</span><br><span class="line">  name: Jenny Smith</span><br><span class="line">   age: 12</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、语法特点"><a href="#2、语法特点" class="headerlink" title="2、语法特点"></a>2、语法特点</h4><ul>
+<li>大小写敏感</li>
+<li>使用缩进表示层级关系</li>
+<li>缩进时不允许使用Tab键，只允许使用空格</li>
+<li>缩进的空格数目不重要，只要相同曾记得元素左侧对齐即可</li>
+</ul>
+<h4 id="3、下载安装"><a href="#3、下载安装" class="headerlink" title="3、下载安装"></a>3、下载安装</h4><p>cmd中输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyyaml</span><br></pre></td></tr></table></figure>
+
+<p>或者<a target="_blank" rel="noopener" href="http://pyyaml.org/wiki/PyYAML">官网</a>下载</p>
+<h2 id="二、yaml数据类型详解"><a href="#二、yaml数据类型详解" class="headerlink" title="二、yaml数据类型详解"></a>二、yaml数据类型详解</h2><h4 id="1、支持数据类型"><a href="#1、支持数据类型" class="headerlink" title="1、支持数据类型"></a>1、支持数据类型</h4><ol>
+<li><strong>纯量</strong>(scalars):单个的、不可再分的值。</li>
+<li><strong>数组</strong>：一组按次序排列的值，又称为序列(sequence)/列表(list)</li>
+<li></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/06/yaml/" data-id="ckt8dmjqj00007swdby3o0kjs" data-title="yaml" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-韶光抚月-天下人间" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/09/01/%E9%9F%B6%E5%85%89%E6%8A%9A%E6%9C%88-%E5%A4%A9%E4%B8%8B%E4%BA%BA%E9%97%B4/" class="article-date">
@@ -263,6 +323,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/09/06/yaml/">yaml</a>
+          </li>
         
           <li>
             <a href="/2021/09/01/%E9%9F%B6%E5%85%89%E6%8A%9A%E6%9C%88-%E5%A4%A9%E4%B8%8B%E4%BA%BA%E9%97%B4/">韶光抚月 天下人间</a>
