@@ -461,7 +461,162 @@
 <p>转化为python：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#x27;name&#x27;:&#x27;Tom Smith&#x27;,&#x27;age&#x27;:37,&#x27;spouse&#x27;:&#123;&#x27;name&#x27;:&#x27;Jane Smith&#x27;,&#x27;age&#x27;:25&#125;,&#x27;childern&#x27;:[&#123;&#x27;name&#x27;:&#x27;Jimmy Smith&#x27;,&#x27;age&#x27;:15&#125;,&#123;&#x27;name&#x27;:&#x27;Jenny Smith&#x27;,&#x27;age&#x27;:12&#125;]&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="三、yaml数据操作"><a href="#三、yaml数据操作" class="headerlink" title="三、yaml数据操作"></a>三、yaml数据操作</h2>
+<h2 id="三、yaml数据操作"><a href="#三、yaml数据操作" class="headerlink" title="三、yaml数据操作"></a>三、yaml数据操作</h2><h4 id="1、数据读取"><a href="#1、数据读取" class="headerlink" title="1、数据读取"></a>1、数据读取</h4><h5 id="1）测试场景"><a href="#1）测试场景" class="headerlink" title="1）测试场景"></a>1）测试场景</h5><ul>
+<li>读取配置中的所有信息</li>
+<li>读取yaml数据表中Tom Smith的姓名、年龄、信息</li>
+<li>单独读取配偶的姓名和年龄信息</li>
+<li>分别读取两个孩子的姓名、年龄信息</li>
+</ul>
+<h5 id="2）load方法"><a href="#2）load方法" class="headerlink" title="2）load方法"></a>2）load方法</h5><p>load(stream, Loader=Loader) 解析文件流中的第一个YAML文档并生成相应的Python对象。</p>
+<h5 id="3）代码实现"><a href="#3）代码实现" class="headerlink" title="3）代码实现"></a>3）代码实现</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import yaml</span><br><span class="line">file=open(&#x27;runtest.yaml&#x27;,&#x27;r&#x27;)</span><br><span class="line">data=yaml.load(file)</span><br><span class="line"></span><br><span class="line">print(data)</span><br><span class="line"></span><br><span class="line">print(data[&#x27;name&#x27;])</span><br><span class="line">print(data[&#x27;age&#x27;])</span><br><span class="line"></span><br><span class="line">print(data[&#x27;spouse&#x27;])</span><br><span class="line">print(data[&#x27;spouse&#x27;][&#x27;name&#x27;])</span><br><span class="line">print(data[&#x27;spouse&#x27;][&#x27;age&#x27;])</span><br><span class="line"></span><br><span class="line">print(data[&#x27;children&#x27;])</span><br><span class="line">print(data[&#x27;children&#x27;][0][&#x27;name&#x27;])</span><br><span class="line">print(data[&#x27;children&#x27;][0][&#x27;age&#x27;])</span><br><span class="line"></span><br><span class="line">print(data[&#x27;children&#x27;][1][&#x27;name&#x27;])</span><br><span class="line">print(data[&#x27;children&#x27;][1][&#x27;age&#x27;])</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、数据修改"><a href="#2、数据修改" class="headerlink" title="2、数据修改"></a>2、数据修改</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import yaml</span><br><span class="line">file=open(&#x27;runTest.yaml&#x27;,&#x27;r&#x27;)</span><br><span class="line">data=yaml.load(file)</span><br><span class="line">data[&#x27;name&#x27;]=&#x27;Test123&#x27;</span><br><span class="line">print(data[&#x27;name&#x27;])</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：此处只是变量类型的数据变更，不会真正修改到yaml配置表中的数据。</p>
+<h4 id="3、数据转化"><a href="#3、数据转化" class="headerlink" title="3、数据转化"></a>3、数据转化</h4><p><strong>方法</strong>：dump()可以将Python对象序列化成YAML流。如果stream为None，则返回生成的字符串。</p>
+<h5 id="1）测试场景-1"><a href="#1）测试场景-1" class="headerlink" title="1）测试场景"></a>1）测试场景</h5><p>将下面python数据类型转化为yaml数据类型</p>
+<h5 id="2）代码实践"><a href="#2）代码实践" class="headerlink" title="2）代码实践"></a>2）代码实践</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import yaml</span><br><span class="line"></span><br><span class="line">city=[&#x27;changsha&#x27;,&#x27;wuhan&#x27;,&#x27;beijing&#x27;]</span><br><span class="line">person=&#123;&#x27;tom&#x27;:&#x27;18&#x27;&#125;</span><br><span class="line"></span><br><span class="line">#python data</span><br><span class="line">print(city)</span><br><span class="line">print(person)</span><br><span class="line">#yaml data</span><br><span class="line">print(yaml.dump(city))</span><br><span class="line">print(yaml.dump(person))</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;changsha&#x27;, &#x27;wuhan&#x27;, &#x27;beijing&#x27;]</span><br><span class="line">&#123;&#x27;tom&#x27;: &#x27;18&#x27;&#125;</span><br><span class="line">- changsha</span><br><span class="line">- wuhan</span><br><span class="line">- beijing</span><br><span class="line"></span><br><span class="line">tom: &#x27;18&#x27;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、Capability配置数据分离"><a href="#4、Capability配置数据分离" class="headerlink" title="4、Capability配置数据分离"></a>4、Capability配置数据分离</h4><h5 id="1）测试场景-2"><a href="#1）测试场景-2" class="headerlink" title="1）测试场景"></a>1）测试场景</h5><p>将capability的各项参数值与代码进行分离。</p>
+<h5 id="2）场景分析"><a href="#2）场景分析" class="headerlink" title="2）场景分析"></a>2）场景分析</h5><p>我们可以把之前capability中各项写死的配置信息来抽离出来，存放在一个yaml配置文件中，使用 对象数据类型来存储数据；然后调用load()方法读取数据，从而实现数据和代码的分离。</p>
+<h5 id="3）代码实现-1"><a href="#3）代码实现-1" class="headerlink" title="3）代码实现"></a>3）代码实现</h5><p>1.参数配置表：<strong>desired_caps.yaml</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">platformName: Android</span><br><span class="line">platformVersion: 7.1.2</span><br><span class="line">deviceName: 127.0.0.1:62025</span><br><span class="line">app: D\kaoyan3.1.0.apk</span><br><span class="line">noReset: False</span><br><span class="line">appPackage: com.tal.kaoyan</span><br><span class="line">appActivity: com.tal.kaoyan.ui.activity.SplashActivity</span><br><span class="line">ip: 127.0.0.1</span><br><span class="line">port: 4723</span><br></pre></td></tr></table></figure>
+
+<p>python脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from appium import webdriver</span><br><span class="line">import yaml</span><br><span class="line"></span><br><span class="line">file=open(&#x27;desired_caps.yaml&#x27;,&#x27;r&#x27;)</span><br><span class="line">data=yaml.load(file)</span><br><span class="line"></span><br><span class="line">desired_caps=&#123;&#125;</span><br><span class="line">desired_caps[&#x27;platformName&#x27;]=data[&#x27;platformName&#x27;]</span><br><span class="line">desired_caps[&#x27;platformVersion&#x27;]=data[&#x27;platformVersion&#x27;]</span><br><span class="line">desired_caps[&#x27;deviceName&#x27;]=data[&#x27;deviceName&#x27;]</span><br><span class="line"></span><br><span class="line">desired_caps[&#x27;app&#x27;]=data[&#x27;app&#x27;]</span><br><span class="line">desired_caps[&#x27;noReset&#x27;]=data[&#x27;noReset&#x27;]</span><br><span class="line"></span><br><span class="line">desired_caps[&#x27;appPackage&#x27;]=data[&#x27;appPackage&#x27;]</span><br><span class="line">desired_caps[&#x27;appActivity&#x27;]=data[&#x27;appActivity&#x27;]</span><br><span class="line"></span><br><span class="line">driver = webdriver.Remote(&#x27;http://&#x27;+str(data[&#x27;ip&#x27;])+&#x27;:&#x27;+str(data[&#x27;port&#x27;])+&#x27;/wd/hub&#x27;, desired_caps)</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、日职概述"><a href="#四、日职概述" class="headerlink" title="四、日职概述"></a>四、日职概述</h2><h5 id="1）日志作用"><a href="#1）日志作用" class="headerlink" title="1）日志作用"></a>1）日志作用</h5><p>不管是在项目开发还是测试过程中，项目运行一旦出现问题日志信息就非常重要了。日志是定位问题的重要手段，就像侦探人员要根据现场留下的线索来推断案情。</p>
+<h5 id="2）日志级别"><a href="#2）日志级别" class="headerlink" title="2）日志级别"></a>2）日志级别</h5><p>脚本运行会有很多的情况，比如调试信息、报错异常信息等。日志要根据这些不同的情况来继续分级管理，不然对于排查问题的筛选会有比较大的干扰。 。日志一般定位的级别如下：</p>
+<table>
+<thead>
+<tr>
+<th><strong>级别</strong></th>
+<th><strong>何时使用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DEBUG</td>
+<td>调试信息，也是最详细的日志信息。</td>
+</tr>
+<tr>
+<td>INFO</td>
+<td>证明事情按预期工作。</td>
+</tr>
+<tr>
+<td>WARNING</td>
+<td>表明发生了一些意外，或者不久的将来会发生问题（如‘磁盘满了’）。软件还是在正常工作。</td>
+</tr>
+<tr>
+<td>ERROR</td>
+<td>由于更严重的问题，软件已不能执行一些功能了。</td>
+</tr>
+<tr>
+<td>CRITICAL</td>
+<td>严重错误，表明软件已不能继续运行了。</td>
+</tr>
+</tbody></table>
+<p>首先我们日志需要按照info、debug、error等级别来进行区分的。当然这个级别可以自己去设置。在一般的情况下我们普通的输出我们直接用info类型，调试的时候用debug类型，如果预计有错误时那么我们就需要用error类型的日志，一般情况去info级别最为合适。</p>
+<h5 id="3）日志格式"><a href="#3）日志格式" class="headerlink" title="3）日志格式"></a>3）日志格式</h5><p>日志格式化是为了提高日志的可阅读性，比如：<strong>时间+模块+行数+日志具体信息</strong> 的内容格式。如果日志信息杂乱无章的全部输出来，这样也不利于定位问题。</p>
+<h5 id="4）日志位置"><a href="#4）日志位置" class="headerlink" title="4）日志位置"></a>4）日志位置</h5><p>一个项目中会有很多的日志采集点，而日志采集点必须结合业务属性来设置。比如在登录代码执行前可以插入“准备登录..”日志信息,如果登录完成之后，再设置登录的提示日志就会给人造成误解，无法判断到底是登录之前的问题还是登录之后的问题，因此日志采集点的位置很重要。</p>
+<h2 id="五、logging模块"><a href="#五、logging模块" class="headerlink" title="五、logging模块"></a>五、logging模块</h2><h5 id="1）简介"><a href="#1）简介" class="headerlink" title="1）简介"></a>1）简介</h5><p>Python的logging模块提供了通用的日志系统，这个模块提供不同的日志级别，并可以采用不同的方式记录日志，比如文件，HTTP GET/POST，SMTP，Socket等，甚至可以自己实现方式记录日志。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#导入logging模块</span><br><span class="line">import logging</span><br></pre></td></tr></table></figure>
+
+<h5 id="2）logging构成"><a href="#2）logging构成" class="headerlink" title="2）logging构成"></a>2）logging构成</h5><p>logging模块包括<strong>logger，Handler，Filter，Formatter</strong>四个部分。</p>
+<ul>
+<li>Logger 记录器，用于设置日志采集。</li>
+<li>Handler 处理器，将日志记录发送至合适的路径。</li>
+<li>Filter 过滤器，提供了更好的粒度控制，它可以决定输出哪些日志记录。</li>
+<li>Formatter 格式化器，指明了最终输出中日志的格式。</li>
+</ul>
+<h5 id="3）Logger记录器"><a href="#3）Logger记录器" class="headerlink" title="3）Logger记录器"></a>3）Logger记录器</h5><p>Logger是一个树形层级结构，在使用接口debug，info，warn，error，critical；使用之前必须创建Logger实例，即创建一个记录器，如果没有显式的进行创建，则默认创建一个root logger，并应用默认的日志级别(WARN)，Handler和Formatter。</p>
+<p><strong>方法</strong>：</p>
+<p>basicConfig(参数) 为日志记录系统做基本配置。</p>
+<p><strong>部分参数</strong></p>
+<p><strong>filename</strong> 指定日志文件名称</p>
+<p><strong>filemode</strong> 指定打开文件的模式，如果指定了filename（如果文件模式未指定，则默认为’a）</p>
+<p>文件读写模式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">w 以写方式打开，</span><br><span class="line">W 文件若存在，首先要清空，然后（重新）创建</span><br><span class="line">a 以追加模式打开 (从 EOF 开始, 必要时创建新文件)</span><br><span class="line">r+ 以读写模式打开</span><br><span class="line">w+ 以读写模式打开 (参见 w )</span><br><span class="line">a+ 以读写模式打开 (参见 a )</span><br></pre></td></tr></table></figure>
+
+<p><strong>format</strong> 为处理程序使用指定的格式字符串。</p>
+<p><strong>datefmt</strong> 使用指定的日期/时间格式。样式如果指定了格式字符串，则使用它来指定 格式字符串的类型.</p>
+<p><strong>level</strong> 将根记录器级别设置为指定级别。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import logging</span><br><span class="line">logging.basicConfig(level=logging.DEBUG)</span><br><span class="line">logging.basicConfig(level=logging.INFO)</span><br><span class="line">logging.debug(&#x27;debug info&#x27;)</span><br><span class="line">logging.info(&#x27;hello tom！&#x27;)</span><br><span class="line">logging.warning(&#x27;warning info&#x27;)</span><br><span class="line">logging.error(&#x27;error info&#x27;)</span><br><span class="line">logging.critical(&#x27;critical info&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="4）Handler处理器"><a href="#4）Handler处理器" class="headerlink" title="4）Handler处理器"></a>4）Handler处理器</h5><p>Handler 处理器，将日志记录发送至合适的路径,Handler处理器类型有很多种，比较常用的有三个：</p>
+<p><strong>1°StreamHandler</strong></p>
+<p>将日志记录输出发送到诸如sys.stdout，sys.stderr或任何类似文件流的对象。</p>
+<p><strong>2°FileHandler</strong></p>
+<p>将日志记录输出发送到磁盘文件。 它继承了StreamHandler的输出功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logging.basicConfig(filename=&#x27;runlog.log&#x27;,level=logging.DEBUG)</span><br></pre></td></tr></table></figure>
+
+<p><strong>3°NullHandler</strong></p>
+<p>不做任何格式化或输出。 它本质上是一个开发人员使用的“无操作”处理程序。</p>
+<p><strong>4°Formatter</strong></p>
+<p>使用Formatter对象设置日志信息最后的规则、结构和内容，默认的时间格式为:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%Y-%m-%d %H:%M:%S</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th><strong>格式</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%(levelno)s</td>
+<td>打印日志级别的数值</td>
+</tr>
+<tr>
+<td>%(levelname)s</td>
+<td>打印日志级别名称</td>
+</tr>
+<tr>
+<td>%(pathname)s</td>
+<td>打印当前执行程序的路径</td>
+</tr>
+<tr>
+<td>%(filename)s</td>
+<td>打印当前执行程序名称</td>
+</tr>
+<tr>
+<td>%(funcName)s</td>
+<td>打印日志的当前函数</td>
+</tr>
+<tr>
+<td>%(lineno)d</td>
+<td>打印日志的当前行号</td>
+</tr>
+<tr>
+<td>%(asctime)s</td>
+<td>打印日志的时间</td>
+</tr>
+<tr>
+<td>%(thread)d</td>
+<td>打印线程id</td>
+</tr>
+<tr>
+<td>%(threadName)s</td>
+<td>打印线程名称</td>
+</tr>
+<tr>
+<td>%(process)d</td>
+<td>打印进程ID</td>
+</tr>
+<tr>
+<td>%(message)s</td>
+<td>打印日志信息</td>
+</tr>
+</tbody></table>
+<p>使用方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import logging</span><br><span class="line">logging.basicConfig(filename=&#x27;runlog.log&#x27;,level=logging.DEBUG,</span><br><span class="line">format=&#x27;%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s&#x27;)</span><br><span class="line">logging.debug(&#x27;debug info&#x27;)</span><br><span class="line">logging.info(&#x27;hello tom！&#x27;)</span><br><span class="line">logging.warning(&#x27;warning info&#x27;)</span><br><span class="line">logging.error(&#x27;error info&#x27;)</span><br><span class="line">logging.critical(&#x27;critical info&#x27;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2021-09-02 11:50:20,094 ��־.py[line:5] DEBUG debug info</span><br><span class="line">2021-09-02 11:50:41,359 ��־.py[line:5] DEBUG debug info</span><br><span class="line">2021-09-02 11:50:41,360 ��־.py[line:6] INFO hello tom��</span><br><span class="line">2021-09-02 11:50:41,360 ��־.py[line:7] WARNING warning info</span><br><span class="line">2021-09-02 11:50:41,360 ��־.py[line:8] ERROR error info</span><br><span class="line">2021-09-02 11:50:41,360 ��־.py[line:9] CRITICAL critical info</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     <footer class="article-footer">
