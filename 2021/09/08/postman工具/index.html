@@ -1,0 +1,678 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="hujun">
+  <meta name="keywords" content="">
+  
+  <title>postman工具 - kk blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>kk</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="postman工具">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-08 14:40" pubdate>
+        September 8, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      45
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">postman工具</h1>
+            
+            <div class="markdown-body">
+              <h2 id="一、postman的概述"><a href="#一、postman的概述" class="headerlink" title="一、postman的概述"></a>一、postman的概述</h2><h3 id="1、为什么使用postman？"><a href="#1、为什么使用postman？" class="headerlink" title="1、为什么使用postman？"></a>1、为什么使用postman？</h3><p>​        一般简单的接口测试我们可以直接在浏览器里面进行调试，但是涉及到一些权限设置的就无法操作了，因此我们需要接口测试的相关工具，Postman 是一个接口测试和 http请求的工具。</p>
+<h3 id="2、postman的下载和安装"><a href="#2、postman的下载和安装" class="headerlink" title="2、postman的下载和安装"></a>2、postman的下载和安装</h3><p>​        <a target="_blank" rel="noopener" href="https://dl.pstmn.io/download/latest/win64">postman</a>有Windows、Mac、Linux以及Chrome插件版本，这里主要介绍Win平台软件版本的使用。</p>
+<p>​        当然这软件不能支持中文，如果想看中文的，可以下载这款国产高仿的接口测试软件：<a target="_blank" rel="noopener" href="https://www.apipost.cn/#">apipost</a>，还有其对应的<a target="_blank" rel="noopener" href="https://doc.apipost.cn/4a77c87f97fb686b">软件手册</a>。</p>
+<h3 id="3、postman的优缺点"><a href="#3、postman的优缺点" class="headerlink" title="3、postman的优缺点"></a>3、postman的优缺点</h3><ul>
+<li>支持各种的请求类型: get、post、put、patch、delete 等 </li>
+<li>支持在线存储数据，通过账号就可以进行迁移数据 </li>
+<li>很方便的支持请求 header 和请求参数的设置 </li>
+<li>支持不同的认证机制，如 Basic Auth，Digest Auth，OAuth 1.0，OAuth 2.0 等 </li>
+<li>响应数据是自动按照语法格式高亮的，包括 HTML，JSON 和 XML</li>
+</ul>
+<h3 id="4、postman界面介绍"><a href="#4、postman界面介绍" class="headerlink" title="4、postman界面介绍"></a>4、postman界面介绍</h3><h4 id="A、postman界面组成"><a href="#A、postman界面组成" class="headerlink" title="A、postman界面组成"></a>A、postman界面组成</h4><p><img src="https://pic.imgdb.cn/item/61385dfe44eaada739bfa48d.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="B、控制台"><a href="#B、控制台" class="headerlink" title="B、控制台"></a>B、控制台</h4><p>​        postman控制台：先打开console，再点击send发送请求</p>
+<p><img src="https://pic.imgdb.cn/item/61385edb44eaada739c12f27.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>​        devtools控制台：view–&gt;developer下</p>
+<p>​        快捷键（ctrl+shift+I）</p>
+<p><img src="https://pic.imgdb.cn/item/61385f3d44eaada739c1dc2f.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="二、工作原理"><a href="#二、工作原理" class="headerlink" title="二、工作原理"></a>二、工作原理</h2><p>​        如下图所示，当您在Postman中输入请求并单击Send按钮时，服务器将接收您的请求并返回Postman在接口中显示的响应。</p>
+<p><img src="https://pic.imgdb.cn/item/61385fb144eaada739c2b796.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="三、postman发送多种请求"><a href="#三、postman发送多种请求" class="headerlink" title="三、postman发送多种请求"></a>三、postman发送多种请求</h2><h3 id="1、发送get请求"><a href="#1、发送get请求" class="headerlink" title="1、发送get请求"></a>1、发送get请求</h3><p>​        HTTPGET请求方法用于从服务器检索数据。数据由唯一的URI(统一资源标识符)标识。GET请求可以使用“QueryStringParameters”将参数传递给服务器。例如，在下面的请求中：</p>
+<p>eg：查询快递100的接口欧，下面准备接口地址</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">http<span class="hljs-variable">s:</span>//www.kuaidi100.<span class="hljs-keyword">com</span>/query?<span class="hljs-built_in">type</span>=yuantong&amp;postid=<span class="hljs-number">123456</span><br></code></pre></td></tr></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>Type、postid表示发送的参数</li>
+<li>？后面连接参数</li>
+<li>&amp;表示连接多个参数</li>
+</ul>
+<p><strong>编辑参数：</strong></p>
+<p><img src="https://pic.imgdb.cn/item/613860b244eaada739c47f1f.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><strong>注</strong>：Type设置的快递公司名称的拼音；Postid:表示快递的单号</p>
+<h3 id="2、发送post请求"><a href="#2、发送post请求" class="headerlink" title="2、发送post请求"></a>2、发送post请求</h3><p>​        HTTP post请求方法旨在将数据传输到服务器，返回的数据取决于服务器的实现。post请求可以使用Query String Parameters以及body将参数传递给服务器。</p>
+<p>eg：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver"><span class="hljs-keyword">https</span>://postman-echo.com/<span class="hljs-built_in">post</span>?<span class="hljs-built_in">param</span>=java<br></code></pre></td></tr></table></figure>
+
+<p>返回值</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>	<span class="hljs-attr">&quot;args&quot;</span>:&#123;<br>		<span class="hljs-attr">&quot;param&quot;</span>:<span class="hljs-string">&quot;java&quot;</span><br>	&#125;,<br>	<span class="hljs-attr">&quot;data&quot;</span>:&#123;&#125;,<br>	<span class="hljs-attr">&quot;files&quot;</span>:&#123;&#125;,<br>    <span class="hljs-attr">&quot;form&quot;</span>:&#123;&#125;,<br>    <span class="hljs-attr">&quot;headers&quot;</span>:&#123;<br>    	<span class="hljs-attr">&quot;x-forwarded-proto&quot;</span>:<span class="hljs-string">&quot;https&quot;</span>,<br>    <span class="hljs-attr">&quot;x-forwarded-port&quot;</span>:<span class="hljs-string">&quot;443&quot;</span>,<br>    <span class="hljs-attr">&quot;host&quot;</span>:<span class="hljs-string">&quot;postman-echo.com&quot;</span>,<br>    <span class="hljs-attr">&quot;x-amzn-trace-id&quot;</span>:<span class="hljs-string">&quot;Root=1-5f297e6e-ff1108001ac45200f71e6e00&quot;</span>,<br>    <span class="hljs-attr">&quot;content-length&quot;</span>:<span class="hljs-string">&quot;0&quot;</span>,<br>    <span class="hljs-attr">&quot;cache-control&quot;</span>:<span class="hljs-string">&quot;no-cache&quot;</span>,<br>    <span class="hljs-attr">&quot;postman-token&quot;</span>:<span class="hljs-string">&quot;69f685b5-96ab-4ca2-83b5-26f4e1c50203&quot;</span>,<br>    <span class="hljs-attr">&quot;user-agent&quot;</span>:<span class="hljs-string">&quot;PostmanRuntime/7.4.0&quot;</span>,<br>    <span class="hljs-attr">&quot;accept&quot;</span>:<span class="hljs-string">&quot;*/*&quot;</span>,<br>    <span class="hljs-attr">&quot;cookie&quot;</span>:<span class="hljs-string">&quot;sails.sid=s%3AwSs2NC8SufYRF_X8JSeoRRYm2S8zld8-.0lM9TgljEowpovt7s9 T4jobFlIbPoF5e6gaYBSiw758&quot;</span>,<br>    <span class="hljs-attr">&quot;accept-encoding&quot;</span>:<span class="hljs-string">&quot;gzip,deflate&quot;</span><br>&#125;,<br><span class="hljs-attr">&quot;json&quot;</span>:<span class="hljs-literal">null</span>,<br><span class="hljs-attr">&quot;url&quot;</span>:<span class="hljs-string">&quot;https://postman-echo.com/post?param=java&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3、发送put请求"><a href="#3、发送put请求" class="headerlink" title="3、发送put请求"></a>3、发送put请求</h3><p>​        HTTP put请求主要是从客户端向服务器传送的数据取代指定的文档的内容。</p>
+<p>​        put请求可以使用QueryStringParameters以及body请求体将参数传递给服务器。</p>
+<p>eg：发送put请求，并传递字符串参数</p>
+<p><img src="https://pic.imgdb.cn/item/6138630044eaada739c89079.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4、发送delete请求"><a href="#4、发送delete请求" class="headerlink" title="4、发送delete请求"></a>4、发送delete请求</h3><p>​        HTTP DELETE方法用于删除服务器上的资源，DELETE Parameters以及body请求体将参数传递给服务器。</p>
+<p>准备接口参数：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">http<span class="hljs-variable">s:</span>//postman-<span class="hljs-keyword">echo</span>.<span class="hljs-keyword">com</span>/<span class="hljs-keyword">delete</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/613863a444eaada739c9aab9.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="5、请求头"><a href="#5、请求头" class="headerlink" title="5、请求头"></a>5、请求头</h3><p>​        RequestHeader（请求头）用来说明服务器要使用的附加信息，比较重要的信息有 Cookie、Referer、User-Agent等。在Postman中可以在请求下方的Headers栏目来</p>
+<p>设置，如下如图所示：</p>
+<p><strong>准备接口参数：</strong></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>postman-echo.com/post?param=java&amp;param=C<span class="hljs-comment">#</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/6138652744eaada739cc6b50.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="6、响应头"><a href="#6、响应头" class="headerlink" title="6、响应头"></a>6、响应头</h3><p>​        ResponseHeader(响应头)其中包含了服务器对请求的应答信息，如 Content-Type、Server、Set-Cookie等，在Postman主界面下方Headers或者PostmanConsole界面都可以查看ResponseHeader信息。</p>
+<p><img src="C:\Users\EDZ\AppData\Roaming\Typora\typora-user-images\image-20210908152645408.png" srcset="/img/loading.gif" lazyload alt="image-20210908152645408"></p>
+<h2 id="四、授权设置"><a href="#四、授权设置" class="headerlink" title="四、授权设置"></a>四、授权设置</h2><p>​        很多时候，出于安全考虑我们的接口并不希望对外公开。这个时候就需要使用授权(Authorization)机制授权过程验证您是否具有访问服务器所需数据的权限。</p>
+<p>​        当您发送请求时，您通常必须包含参数，以确保请求具有访问和返回所需数据的权限。</p>
+<p>​        postman提供授权类型，可以轻松的在postman本地应用程序中处理身份验证协议。</p>
+<p>postman支持的授权协议类型如下：</p>
+<ul>
+<li>No Auth·Bearer Token</li>
+<li><strong>Basic auth</strong></li>
+<li><strong>Digest Auth</strong></li>
+<li><strong>OAuth 1.0</strong></li>
+<li>OAuth 2.0</li>
+<li><strong>Hawk Authentication</strong></li>
+<li>AWS Signature</li>
+<li>NTLM Authentication [Beta]</li>
+</ul>
+<p>这里主要介绍以上加粗的授权协议。</p>
+<h3 id="1、如何打开授权界面"><a href="#1、如何打开授权界面" class="headerlink" title="1、如何打开授权界面"></a>1、如何打开授权界面</h3><p><img src="https://pic.imgdb.cn/item/6138687344eaada739d23cf1.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2、Basic-auth授权"><a href="#2、Basic-auth授权" class="headerlink" title="2、Basic auth授权"></a>2、Basic auth授权</h3><p>​        基本身份验证是一种比较简单的授权类型，需要经过验证的用户名和密码才能访问数据资 </p>
+<p>源。这就需要我们输入用 户名和对应的密码。</p>
+<p><strong>eg</strong>：请求URL如下，授权账号为：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">用户名: postman </span><br><span class="hljs-section">密码: password </span><br>授权协议为：Basic auth<br><span class="hljs-section">URL:https://postman-echo.com/basic-auth</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>注：</strong></p>
+<p>1）如果不输入用户名密码，直接使用GET请求，则会返回提示：Unauthorized</p>
+<p><img src="https://pic.imgdb.cn/item/6138695344eaada739d3c90f.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>2）输入用户名密码，选择 Basic auth 授权类型，则返回如下结果：</p>
+<p><img src="https://pic.imgdb.cn/item/613869ab44eaada739d470aa.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3、Digest-Auth授权"><a href="#3、Digest-Auth授权" class="headerlink" title="3、Digest Auth授权"></a>3、Digest Auth授权</h3><p>​        Digest auth 是一个简单的认证机制，最初是为 HTTP 协议开发的，因此也常叫做 </p>
+<p>HTTP 摘要。 </p>
+<p>​        其身份验证机制非 常简单，它采用哈希加密方法，以避免用明文传输用户的口令。摘 </p>
+<p>要认证就是要核实參与通信的两方都知道双方共 </p>
+<p>享的一个口令。 </p>
+<p>​        当 server 想要查证用户的身份，它产生一个摘要盘问（digest challenge），并发送 </p>
+<p>给用户。典型的摘要盘问例如 以下：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">Digest <span class="hljs-attribute">realm</span>=<span class="hljs-string">&quot;iptel.org&quot;</span>, <span class="hljs-attribute">qop</span>=<span class="hljs-string">&quot;auth,auth-int&quot;</span>, <span class="hljs-attribute">nonce</span>=<span class="hljs-string">&quot;dcd98b7102dd2f0e8b11d0f600bfb0c093&quot;</span>, <span class="hljs-attribute">opaque</span>=<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-attribute">algorithm</span>=MD5<br></code></pre></td></tr></table></figure>
+
+<p>这里包含了一组参数，也要发送给用户。用户使用这些參数，来产生正确的摘要回答，并发 </p>
+<p>送给 server。各个參数意义如下：</p>
+<p><strong>realm（领域</strong>）：领域參数是强制的，在全部的盘问中都必须有。它是目的是鉴别 SIP 消 </p>
+<p>息中的机密。在 SIP 实际应用中，它通常设置为 SIP 代理 server 所负责的域名。 </p>
+<p><strong>nonce（现时）</strong>：这是由 server 规定的数据字符串，在 server 每次产生一个摘要盘问时， </p>
+<p>这个參数都是不一样的 （与前面所产生的不会雷同）。“现时”一般是由一些数据通过 md5 </p>
+<p>杂凑运算构造的。 这种数据通常包含时间标 识和 server 的机密短语。这确保每一个“现 </p>
+<p>时”都有一个有限的生命期（也就是过了一些时间后会失效，并且以后再也不会使用），并 </p>
+<p>且是独一无二的 （即不论什么其他的 server 都不能产生一个同样的“现时”）。 </p>
+<p><strong>algorithm（算法）</strong>：这是用来计算的算法。当前仅仅支持 MD5 算法。 </p>
+<p><strong>qop（保护的质量）</strong>：这个參数规定 server 支持哪种保护方案。client 能够从列表中选择 </p>
+<p>一个。值 auth 表示仅仅 进行身份查验， auth-int 表示进行查验外，另一些完整性保护。</p>
+<p>须要看更具体的描写叙述，请參阅 RFC2617。参考链接点<a target="_blank" rel="noopener" href="https://blog.csdn.net/guobailu/article/details/82775459">这里</a>。</p>
+<p><strong>eg：</strong>准备URL：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">http<span class="hljs-variable">s:</span>//postman-<span class="hljs-keyword">echo</span>.<span class="hljs-keyword">com</span>/digest-auth<br></code></pre></td></tr></table></figure>
+
+<p><strong>配置：</strong></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">Digest <span class="hljs-attribute">username</span>=<span class="hljs-string">&quot;postman&quot;</span>, <span class="hljs-attribute">realm</span>=<span class="hljs-string">&quot;Users&quot;</span>, <span class="hljs-attribute">nonce</span>=<span class="hljs-string">&quot;ni1LiL0O37PRRhofWdCLmwFsnEtH1lew&quot;</span>, <span class="hljs-attribute">uri</span>=<span class="hljs-string">&quot;/digest-auth&quot;</span>, <span class="hljs-attribute">response</span>=<span class="hljs-string">&quot;254679099562cf07df9b6f5d8d15db44&quot;</span>, <span class="hljs-attribute">opaque</span>=<span class="hljs-string">&quot;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/61386ad844eaada739d67140.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>一切都正确，结果如下：</p>
+<p><img src="https://pic.imgdb.cn/item/61386b3344eaada739d718b2.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4、Hawk-Auth"><a href="#4、Hawk-Auth" class="headerlink" title="4、Hawk Auth"></a>4、Hawk Auth</h3><p>​        Hawk Auth 是一个 HTTP 认证方案，使用 MAC(Message Authentication Code， </p>
+<p>消息认证码算法)算法，它提供 了对请求进行部分加密验证的认证 HTTP 请求的方法。 </p>
+<p>​        hawk 方案要求提供一个共享对称密匙在服务器与客户端之 间，通常这个共享的凭证 </p>
+<p>在初始 TLS（安全传输层协议）保护阶段建立的，或者是从客户端和服务器都可用的其他 </p>
+<p>一些共享机密信息中获得的。</p>
+<h4 id="1）准备参数"><a href="#1）准备参数" class="headerlink" title="1）准备参数"></a>1）准备参数</h4><p>请求的URL：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>postman-echo.com<span class="hljs-regexp">/auth/</span>hawk<br></code></pre></td></tr></table></figure>
+
+<p>秘钥信息：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Hawk</span> Auth ID: dh<span class="hljs-number">37</span>fgj<span class="hljs-number">492</span>je <br><span class="hljs-attribute">Hawk</span> Auth Key: werxhqb<span class="hljs-number">98</span>rpaxn<span class="hljs-number">39848</span>xrunpaw<span class="hljs-number">3489</span>ruxnpa<span class="hljs-number">98</span>w<span class="hljs-number">4</span>rxn <br><span class="hljs-attribute">Algorithm</span>:sha<span class="hljs-number">256</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2）步骤截图"><a href="#2）步骤截图" class="headerlink" title="2）步骤截图"></a>2）步骤截图</h4><p><img src="https://pic.imgdb.cn/item/61386bd144eaada739d83448.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3）执行结果"><a href="#3）执行结果" class="headerlink" title="3）执行结果"></a>3）执行结果</h4><p><img src="https://pic.imgdb.cn/item/61386bed44eaada739d86365.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>如果将key改为其他任意字符则返回如下结果：</p>
+<p><img src="https://pic.imgdb.cn/item/61386c7d44eaada739d963b3.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="C:\Users\EDZ\AppData\Roaming\Typora\typora-user-images\image-20210908155619418.png" srcset="/img/loading.gif" lazyload alt="image-20210908155619418"></p>
+<h3 id="5、OAuth-1-0"><a href="#5、OAuth-1-0" class="headerlink" title="5、OAuth 1.0"></a>5、OAuth 1.0</h3><p>​        OAuth（开放授权）是一个开放标准，允许用户让第三方应用访问该用户在某一网站 </p>
+<p>上存储的私密的资源（如照片， 视频，联系人列表），而无需将用户名和密码提供给第三 </p>
+<p>方应用。扩展资料点<a target="_blank" rel="noopener" href="https://blog.huoding.com/2010/10/10/8">这里</a>。</p>
+<h4 id="1）准备参数-1"><a href="#1）准备参数-1" class="headerlink" title="1）准备参数"></a>1）准备参数</h4><p>请求 URL 如下：请求方式为 GET，Add authorization data to</p>
+<p>设置Request Headers为：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">http<span class="hljs-variable">s:</span>//postman-<span class="hljs-keyword">echo</span>.<span class="hljs-keyword">com</span>/oauth1<br></code></pre></td></tr></table></figure>
+
+<p><strong>配置参数：</strong></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Consumer</span> Key: RKCGzna<span class="hljs-number">7</span>bv<span class="hljs-number">9</span>YD<span class="hljs-number">57</span>c <br><span class="hljs-attribute">Consumer</span> Secret: D+EdQ-gs$-%@<span class="hljs-number">2</span>Nu<span class="hljs-number">7</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-步骤截图"><a href="#2-步骤截图" class="headerlink" title="2)步骤截图"></a>2)步骤截图</h4><p><img src="https://pic.imgdb.cn/item/61386e2144eaada739dc902d.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3）执行结果-1"><a href="#3）执行结果-1" class="headerlink" title="3）执行结果"></a>3）执行结果</h4><p>正确结果：</p>
+<p><img src="https://pic.imgdb.cn/item/61386e6244eaada739dd0c56.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>异常结果：</p>
+<p>如果 Consumer Secret 错误则返回如下结果：</p>
+<p><img src="https://pic.imgdb.cn/item/61386ebe44eaada739dda1ac.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="五、Cookie设置"><a href="#五、Cookie设置" class="headerlink" title="五、Cookie设置"></a>五、Cookie设置</h2><h3 id="1、什么是cookie"><a href="#1、什么是cookie" class="headerlink" title="1、什么是cookie"></a>1、什么是cookie</h3><p>​        cookie 是存储在浏览器中的小片段信息，每次请求后都将其发送回服务器，以便在请 </p>
+<p>求之间存储有用的信息。比如很多网站登录界面都有保留账号密码，以便下次登录。</p>
+<p>​        由于 HTTP 是一种无状态的协议，服务器单从网络连接上无从知道客户身份。怎么办 </p>
+<p>呢？就给客户端们颁发一个通行证吧，每人一个，无论谁访问都必须携带自己通行证。这样 </p>
+<p>服务器就能从通行证上确认客户身份了。这就是 Cookie 的工作原理。 </p>
+<p>​        <strong>Cookie 是由服务端生成，存储在响应头中，返回给客户端，客户端会将 cookie 存</strong> </p>
+<p><strong>储下来，在客户端发送请求时， user-agent 会自动获取本地存储的 cookie，将 cookie</strong> </p>
+<p><strong>信息存储在请求头中，并发送给服务端</strong>。 </p>
+<p>​        postman 也可以设置、获取、删除 Cookie。</p>
+<h3 id="2、设置cookie"><a href="#2、设置cookie" class="headerlink" title="2、设置cookie"></a>2、设置cookie</h3><p>​        在 Send 按钮下方点击 Cookies 文字菜单，弹出如下界面，然后可以设置 Cookie。</p>
+<p><img src="https://pic.imgdb.cn/item/61386f2244eaada739de537b.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="1）准备参数-2"><a href="#1）准备参数-2" class="headerlink" title="1）准备参数"></a>1）准备参数</h4><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">URL:</span>https:<span class="hljs-comment">//www.baidu.com</span><br>请求方式：<span class="hljs-meta">GET</span> 请求 <br></code></pre></td></tr></table></figure>
+
+<h4 id="2）操作步骤"><a href="#2）操作步骤" class="headerlink" title="2）操作步骤"></a>2）操作步骤</h4><p>​        点击下方cookie</p>
+<p><img src="https://pic.imgdb.cn/item/61386f9444eaada739df0fb7.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>添加cookie</p>
+<p><img src="https://pic.imgdb.cn/item/61386fc144eaada739df6198.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>添加参数进去</p>
+<p><img src="https://pic.imgdb.cn/item/61386fe844eaada739dfb0e9.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>点击控制台</p>
+<p><img src="https://pic.imgdb.cn/item/6138700644eaada739dfe917.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>点击发送</p>
+<p><img src="https://pic.imgdb.cn/item/6138702144eaada739e02ba3.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3）查看结果"><a href="#3）查看结果" class="headerlink" title="3）查看结果"></a>3）查看结果</h4><p><img src="https://pic.imgdb.cn/item/6138707c44eaada739e0dc23.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3、获取cookie"><a href="#3、获取cookie" class="headerlink" title="3、获取cookie"></a>3、获取cookie</h3><p>​        Cookie 获取比较简单，直接获取 Response Headers 里面的 set-cookie 值即 </p>
+<p>可，或者在主界面下方 Cookie 菜单栏里面也可以查看。</p>
+<p><img src="https://pic.imgdb.cn/item/613870c544eaada739e15efe.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4、删除cookie"><a href="#4、删除cookie" class="headerlink" title="4、删除cookie"></a>4、删除cookie</h3><p>​        点击 Cookies 文字菜单,然后可以根据需求去清除对应的 Cookie。</p>
+<h2 id="六、变量"><a href="#六、变量" class="headerlink" title="六、变量"></a>六、变量</h2><h3 id="1、为什么需要变量"><a href="#1、为什么需要变量" class="headerlink" title="1、为什么需要变量"></a>1、为什么需要变量</h3><p>在开发不同阶段可能存在不同的环境,比如测试环境和生产环境。 </p>
+<p>测试环境 API 如下：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs vim">http<span class="hljs-variable">s:</span>//dev.postman.<span class="hljs-keyword">com</span>/<span class="hljs-built_in">get</span> <br>http<span class="hljs-variable">s:</span>//dev.postman.<span class="hljs-keyword">com</span>/post <br>http<span class="hljs-variable">s:</span>//dev.postman.<span class="hljs-keyword">com</span>/<span class="hljs-keyword">put</span><br></code></pre></td></tr></table></figure>
+
+<p>生产环境API如下：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs vim">http<span class="hljs-variable">s:</span>//postman-<span class="hljs-keyword">echo</span>.<span class="hljs-keyword">com</span>/<span class="hljs-built_in">get</span> <br>http<span class="hljs-variable">s:</span>//postman-<span class="hljs-keyword">echo</span>.<span class="hljs-keyword">com</span>/post <br>http<span class="hljs-variable">s:</span>//postman-<span class="hljs-keyword">echo</span>.<span class="hljs-keyword">com</span>/<span class="hljs-keyword">put</span><br></code></pre></td></tr></table></figure>
+
+<p>​        在这么情况下，按照常规思路要么你需要维护两套环境的 API，要么每次都手动一个 </p>
+<p>个去修改 URL，不管哪种选择 都比较麻烦且低效，那么有没有比较的好的方法来解决这个 </p>
+<p>问题呢？</p>
+<p>​        通过比较我们可以发现，以上两组 API 主要是除了 host 不同之外其他都一样，其实 </p>
+<p>把 Host 用<strong>变量</strong>替换，这样就可以灵活切换环境。</p>
+<h3 id="2、postman的变量类型"><a href="#2、postman的变量类型" class="headerlink" title="2、postman的变量类型"></a>2、postman的变量类型</h3><p><strong>Postman 提供了变量设置，有 4 种变量类型。</strong></p>
+<ul>
+<li>本地变量(Local Variable)</li>
+<li>全局变量(Global Variable)</li>
+<li>环境变量(Environment Variable)</li>
+<li>数据变量(Data Variable)</li>
+</ul>
+<h3 id="3、postman的变量详解"><a href="#3、postman的变量详解" class="headerlink" title="3、postman的变量详解"></a>3、postman的变量详解</h3><h4 id="1）环境变量-Environment-Variable"><a href="#1）环境变量-Environment-Variable" class="headerlink" title="1）环境变量(Environment Variable)"></a>1）环境变量(Environment Variable)</h4><p>​        环境变量指在不同环境，同一个变量值随着环境不同而变化，比如我们上面举例场景就 </p>
+<p>可以使用环境变量，当在测试环境时，host 值为: dev.postman.com ,当切换到生产环境 </p>
+<p>时，host 值变为：postman-echo.com 。 </p>
+<p>​        环境变量设置： 在 postman 界面点击右上角眼睛图标，即可开始设置环境变量和全 </p>
+<p>局变量。环境变量设置过程如下图所示： </p>
+<p>​        我们可以设置两种环境 dev 和 release, </p>
+<p>​        <strong>dev</strong> <strong>是开发测试环境；</strong> </p>
+<p>​        <strong>release</strong> <strong>是正式的生产环境。</strong> </p>
+<p>​        <strong>host</strong> <strong>环境变量， 根据不同的环境值不一样。</strong></p>
+<p><img src="https://pic.imgdb.cn/item/613872f944eaada739e5592d.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>同样的步骤，再来添加生产环境</p>
+<p><img src="https://pic.imgdb.cn/item/6138731444eaada739e58658.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>变量引用格式为,如下图所示： </p>
+<p>列如：生产环境</p>
+<p><img src="https://pic.imgdb.cn/item/6138765344eaada739eb5edc.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>这里有<a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/948f59247349c0980ff5f9c3.html">完整参考</a></p>
+<h4 id="2）本地变量-LocalVariable"><a href="#2）本地变量-LocalVariable" class="headerlink" title="2）本地变量(LocalVariable )"></a>2）<strong>本地变量</strong>(LocalVariable )</h4><p>​        本地变量主要是针对单个 URL 请求设置的变量，作用域只是局限在请求范围内。如 </p>
+<p>请求 URL 如下，设置两个本地变量（user,passwd）作为参数。请求方式为 POST。</p>
+<p>准备参数</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">http<span class="hljs-variable">s:</span>//postman-<span class="hljs-keyword">echo</span>.<span class="hljs-keyword">com</span>/post<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/613876cc44eaada739ec4d14.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>上面通过环境变量知道，设置变量的格式为： </p>
+<p>变量设置好之后需要赋值，在 Pre-request-Script 里面编写如下代码：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">pm.variables.<span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;user&quot;</span>,<span class="hljs-string">&quot;wulibobo&quot;</span>); <br>pm.variables.<span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;passwd&quot;</span>,<span class="hljs-string">&quot;123456&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/6138770444eaada739ecbd73.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>点击 send 执行之后的返回值如下，可以看到我们定义的变量已经发送。</p>
+<p><img src="https://pic.imgdb.cn/item/6138772e44eaada739ecfeff.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3）全局变量-Global-Variable"><a href="#3）全局变量-Global-Variable" class="headerlink" title="3）全局变量(Global Variable)"></a>3）<strong>全局变量</strong>(Global Variable)</h4><p>​        全局变量是指在所有的环境里面，变量值都是一样的，全局变量的作用域是所有请求。 </p>
+<p>全局变量设置有两种方式：</p>
+<h5 id="1、点击界面里设置"><a href="#1、点击界面里设置" class="headerlink" title="1、点击界面里设置"></a>1、点击界面里设置</h5><p>​        点击眼睛图标后，在 Global 选项菜单点击 Edit 菜单即可设置全局变量，如下图所示。 </p>
+<p>全局变量的引用格式和环境变量一样。</p>
+<p><strong>注：</strong>当环境变量和全局变量名称一样时，切换到某个环境时，环境变量会覆盖全局变量。</p>
+<p><img src="https://pic.imgdb.cn/item/6138779444eaada739ed992c.jpg" srcset="/img/loading.gif" lazyload></p>
+<h5 id="2、在脚本里设置"><a href="#2、在脚本里设置" class="headerlink" title="2、在脚本里设置"></a>2、在脚本里设置</h5><p>​        使用如下脚本可以设置全局变量：variable_key 表示变量名称， variable_value 表示 </p>
+<p>变量值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">pm.<span class="hljs-built_in">globals</span>.<span class="hljs-built_in">set</span>(<span class="hljs-string">&quot;variable_key&quot;</span>, <span class="hljs-string">&quot;variable_value&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<h2 id="七、断言"><a href="#七、断言" class="headerlink" title="七、断言"></a>七、断言</h2><h3 id="1、什么是断言？"><a href="#1、什么是断言？" class="headerlink" title="1、什么是断言？"></a>1、什么是断言？</h3><p>​        一般来说执行完测试，我们需要对测试结果来进行校验，判断结果是是否符合我们的预 </p>
+<p>期，也就是断言。在接口测试中一般会根据响应状态码或者响应返回的数据来进行断言。 </p>
+<p>​        Postman 提供一个测试沙箱（Postman Sandbox） 测试沙箱是一个 JavaScript 执 </p>
+<p>行环境，可以通过 JS 脚本来编 写 pre-request Script 和 test Script。 </p>
+<p>​        pre-request Script（预置脚本）可以用来修改一些默认参数,在请求发送之前执行。 </p>
+<p>​        test Script（测试脚本）当接收到响应之后，再执行测试脚本。</p>
+<h3 id="2、断言的案例"><a href="#2、断言的案例" class="headerlink" title="2、断言的案例"></a>2、断言的案例</h3><h4 id="1）准备的URL"><a href="#1）准备的URL" class="headerlink" title="1）准备的URL"></a>1）准备的URL</h4><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">postman-<span class="hljs-keyword">echo</span>.<span class="hljs-keyword">com</span>/post<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-断言的规则"><a href="#2-断言的规则" class="headerlink" title="2)断言的规则"></a>2)断言的规则</h4><ul>
+<li>响应状态码：200 </li>
+<li>响应内容：返回的 user 参数值与定义的一致 </li>
+<li>响应时间：小于 0.5s</li>
+</ul>
+<h4 id="3）准备的脚本"><a href="#3）准备的脚本" class="headerlink" title="3）准备的脚本"></a>3）准备的脚本</h4><p><strong>在</strong> <strong>pre-request Script</strong> <strong>定义变量</strong> <strong>user</strong></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">pm.variables.<span class="hljs-builtin-name">set</span>(<span class="hljs-string">&quot;user&quot;</span>,<span class="hljs-string">&#x27;wulibobo&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/6138785344eaada739eed4c4.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><strong>在</strong> <strong>Test</strong> <strong>栏下面编写如下脚本</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//判断响应状态码 </span><br>pm.test(<span class="hljs-string">&quot;Status code is 200&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span><br><span class="hljs-function"></span>&#123; <br>pm.response.to.have.status(<span class="hljs-number">200</span>); <br>&#125;<br>); <br><br><span class="hljs-comment">//获取发送的参数值 </span><br>username=pm.variables.get(<span class="hljs-string">&quot;user&quot;</span>);<br><span class="hljs-built_in">console</span>.log(username); <br><br><span class="hljs-comment">//校验响应内容是否和请求的一致 </span><br>pm.test(<span class="hljs-string">&quot;Check username&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span><br><span class="hljs-function"></span>&#123; <br><span class="hljs-keyword">var</span> jsonData = pm.response.json(); pm.expect(jsonData.json[<span class="hljs-string">&#x27;user&#x27;</span>]).to.eql(username); <br>&#125;<br>); <br><br><span class="hljs-comment">//检测响应时间是否小于 0.5s </span><br>pm.test(<span class="hljs-string">&quot;Response time is less than 500ms&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span><br><span class="hljs-function"></span>&#123; <br>pm.expect(pm.response.responseTime).to.be.below(<span class="hljs-number">500</span>); <br>&#125;<br>);<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/613878d744eaada739efae15.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="4）断言的结果"><a href="#4）断言的结果" class="headerlink" title="4）断言的结果"></a>4）断言的结果</h4><p><img src="https://pic.imgdb.cn/item/613878fe44eaada739efff94.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><a target="_blank" rel="noopener" href="https://learning.postman.com/docs/writing-scripts/intro-to-scripts/">postman测试脚本的官方文档</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/">接口测试工具</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/07/monkey%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/">
+                        <span class="hidden-mobile">monkey日志管理</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>blog of kk</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
