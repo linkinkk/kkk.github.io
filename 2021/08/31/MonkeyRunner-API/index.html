@@ -1,0 +1,604 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="hujun">
+  <meta name="keywords" content="">
+  
+  <title>MonkeyRunner API - kk blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="MonkeyRunner API">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-31 13:58" pubdate>
+        August 31, 2021 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      959 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">MonkeyRunner API</h1>
+            
+            <div class="markdown-body">
+              <p>MonkeyRunner工具主要有三个类：</p>
+<p>1）MonkeyRunner</p>
+<p>2）MonkeyDevice</p>
+<p>3）MonkeyImage</p>
+<p>​    <a target="_blank" rel="noopener" href="http://www.android-doc.com/tools/help/monkeyrunner_concepts.html#">官方API文档 </a></p>
+<h1 id="1-MonkeyRunner-类："><a href="#1-MonkeyRunner-类：" class="headerlink" title="1.MonkeyRunner 类："></a>1.MonkeyRunner 类：</h1><p>MonkeyRunner提供连接真机和模拟器、输入、暂停、警告框等方法</p>
+<table>
+<thead>
+<tr>
+<th>alert()</th>
+<th>警告框</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>choice()</strong></td>
+<td><strong>选项列表框</strong></td>
+</tr>
+<tr>
+<td><strong>help()</strong></td>
+<td><strong>API帮助文档</strong></td>
+</tr>
+<tr>
+<td><strong>input()</strong></td>
+<td><strong>输入</strong></td>
+</tr>
+<tr>
+<td><strong>sleep()</strong></td>
+<td><strong>暂停</strong></td>
+</tr>
+<tr>
+<td><strong>waitForConnection()</strong></td>
+<td><strong>等待设备连接</strong></td>
+</tr>
+</tbody></table>
+<h5 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a><strong>常用方法</strong></h5><p><strong>waitForConnection(float timeout,string deviceid)，</strong></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">from</span> com.android.monkeyrunner import MonkeyRunner as mr<br><span class="hljs-builtin-name">print</span>(<span class="hljs-string">&quot;connect devices...&quot;</span>)<br><br><span class="hljs-attribute">device</span>=mr.waitForConnection()<br><span class="hljs-comment"># device=mr.waitForConnection(5,&#x27;127.0.0.1:62001&#x27;)</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="2-MonkeyDevices类"><a href="#2-MonkeyDevices类" class="headerlink" title="2.MonkeyDevices类"></a>2.MonkeyDevices类</h1><p>MonkeyDevice类提供了安装和卸载程序包、开启Activity、发送按键和点击事件、运行测试包等方法。</p>
+<table>
+<thead>
+<tr>
+<th>broadcastInternt()</th>
+<th>发送广播</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>drag()</strong></td>
+<td><strong>拖动</strong></td>
+</tr>
+<tr>
+<td><strong>getProperty()</strong></td>
+<td><strong>获取当前设备属性</strong></td>
+</tr>
+<tr>
+<td><strong>getSystemProperty()</strong></td>
+<td><strong>获取当前设备属性</strong></td>
+</tr>
+<tr>
+<td><strong>installPackage()</strong></td>
+<td><strong>安装应用</strong></td>
+</tr>
+<tr>
+<td><strong>instrument()</strong></td>
+<td><strong>执行测试用例</strong></td>
+</tr>
+<tr>
+<td><strong>press()</strong></td>
+<td><strong>按键</strong></td>
+</tr>
+<tr>
+<td><strong>reboot()</strong></td>
+<td><strong>重启</strong></td>
+</tr>
+<tr>
+<td><strong>removePackage()</strong></td>
+<td><strong>删除指定Package</strong></td>
+</tr>
+<tr>
+<td><strong>shell()</strong></td>
+<td><strong>执行命令</strong></td>
+</tr>
+<tr>
+<td><strong>startActivity()</strong></td>
+<td><strong>启动应用</strong></td>
+</tr>
+<tr>
+<td><strong>touch()</strong></td>
+<td><strong>点击</strong></td>
+</tr>
+</tbody></table>
+<p><strong>常用方法</strong></p>
+<ul>
+<li><strong>installPackage (string path)</strong></li>
+<li><strong>removePackage (string package)</strong></li>
+<li><strong>startActivity (string uri, string action, string data, string mimetype, iterable categories dictionary extras, component component, flags)</strong></li>
+<li><strong>touch (integer x, integer y, integer type)</strong></li>
+</ul>
+<p><strong>touch参数说明</strong></p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-type">integer</span> x，x坐标值。<br><span class="hljs-type">integer</span> y，y坐标值。<br><span class="hljs-type">integer</span> <span class="hljs-keyword">type</span>，key event类型（如DOWN、UP、DOWN_AND_UP）。<br><br>DOWN为按下事件 UP为弹起事件 DOWN_AND_UP为按下弹起事件。<br><br>drag (tuple <span class="hljs-keyword">start</span>, tuple <span class="hljs-keyword">end</span>, <span class="hljs-type">float</span> duration, <span class="hljs-type">integer</span> steps)<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>drag参数详细说明如下：</strong></p>
+<figure class="highlight nim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs nim"><span class="hljs-keyword">tuple</span> start，拖拽起始位置，为<span class="hljs-keyword">tuple</span>类型的(x,y)坐标点。<br><span class="hljs-keyword">tuple</span> <span class="hljs-keyword">end</span>，拖拽终点位置，为<span class="hljs-keyword">tuple</span>类型的(x,y)坐标点。<br><span class="hljs-built_in">float</span> duration，拖拽手势持续时间，默认为<span class="hljs-number">1</span>.<span class="hljs-number">0</span>s。<br>-integer steps，插值点的步数，默认值为<span class="hljs-number">10</span>。<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="实践案例："><a href="#实践案例：" class="headerlink" title="实践案例："></a><strong>实践案例：</strong></h5><p>连接设备，安装考研帮App并启动</p>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> com.android.monkeyrunner <span class="hljs-keyword">import</span> MonkeyRunner <span class="hljs-keyword">as</span> mr<br><span class="hljs-keyword">from</span> com.android.monkeyrunner <span class="hljs-keyword">import</span> MonkeyDevice <span class="hljs-keyword">as</span> md<br><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;connect devices...&quot;</span>)<br>device=mr.waitForConnection()<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;install app...&quot;</span>)<br>device.installPackage(<span class="hljs-string">r&#x27;C:\Users\admin\Desktop\kaoyan3.1.0.apk&#x27;</span>)<br><br>package = <span class="hljs-string">&#x27;com.tal.kaoyan&#x27;</span><br>activity = <span class="hljs-string">&#x27;com.tal.kaoyan.ui.activity.SplashActivity&#x27;</span><br>runComponent = package + <span class="hljs-string">&#x27;/&#x27;</span> + activity<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;launch App...&quot;</span>)<br>device.startActivity(component=runComponent)<br>代码执行方式<br>monkeyrunner scripfile<br><br>C:\Users\admin&gt;monkeyrunner E:\monkeyrunner_script\kyb.py<br></code></pre></td></tr></table></figure>
+
+<h1 id="3-MonkeyImage类"><a href="#3-MonkeyImage类" class="headerlink" title="3.MonkeyImage类"></a>3.MonkeyImage类</h1><p>MonkeyImage类在测试过程中用来保存各种格式的测试截图，并可以进行图像对比。</p>
+<table>
+<thead>
+<tr>
+<th><strong>convertToBytes()</strong></th>
+<th><strong>转换图像格式</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>getRawPixel()</strong></td>
+<td><strong>获取当前坐标像素元组</strong></td>
+</tr>
+<tr>
+<td><strong>getRawPixelint()</strong></td>
+<td><strong>获取当前坐标像素元组</strong></td>
+</tr>
+<tr>
+<td><strong>sameAs()</strong></td>
+<td><strong>图像对比</strong></td>
+</tr>
+<tr>
+<td><strong>writeToFile()</strong></td>
+<td><strong>保存图像文件</strong></td>
+</tr>
+<tr>
+<td><strong>getSubimage()</strong></td>
+<td><strong>截取子图像</strong></td>
+</tr>
+</tbody></table>
+<p><strong>常用方法</strong></p>
+<ul>
+<li><p>takeSnapshot() 进行屏幕截图</p>
+</li>
+<li><p>writeToFile() 保存图像文件到指定的文件路径</p>
+</li>
+</ul>
+<p> <strong>用法示例</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> com.android.monkeyrunner <span class="hljs-keyword">import</span> MonkeyImage <span class="hljs-keyword">as</span> mi  <br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;takeSnapshot&quot;</span>)<br>screenshot=device.takeSnapshot()  <br>screenshot.writeToFile(<span class="hljs-string">r&#x27;E:\monkeyrunner_script\test.png&#x27;</span>,<span class="hljs-string">&#x27;png&#x27;</span>) <br></code></pre></td></tr></table></figure>
+
+<h1 id="综合实践"><a href="#综合实践" class="headerlink" title="综合实践"></a>综合实践</h1><h2 id="测试场景"><a href="#测试场景" class="headerlink" title="测试场景"></a>测试场景</h2><ul>
+<li><p>连接设备，自动安装并启动考研帮app</p>
+</li>
+<li><p>启动后登录账号，然后截图并保存到指定文件位置。</p>
+</li>
+</ul>
+<h2 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h2><ul>
+<li><p>连接设备</p>
+</li>
+<li><p>安装app</p>
+</li>
+<li><p>启动app</p>
+</li>
+<li><p>输入用户名密码点击登录按钮</p>
+</li>
+<li><p>截图</p>
+</li>
+</ul>
+<h2 id="脚本实现"><a href="#脚本实现" class="headerlink" title="脚本实现"></a>脚本实现</h2><p><strong>kyb_login.py</strong></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs stylus">from com<span class="hljs-selector-class">.android</span><span class="hljs-selector-class">.monkeyrunner</span> import MonkeyRunner as mr<br>from com<span class="hljs-selector-class">.android</span><span class="hljs-selector-class">.monkeyrunner</span> import MonkeyDevice as md<br>from com<span class="hljs-selector-class">.android</span><span class="hljs-selector-class">.monkeyrunner</span> import MonkeyImage as mi<br><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-string">&quot;connect devices...&quot;</span>)</span></span><br><br>device=mr<span class="hljs-selector-class">.waitForConnection</span>()<br><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-string">&quot; install app&quot;</span>)</span></span><br>device<span class="hljs-selector-class">.installPackage</span>(r<span class="hljs-string">&#x27;C:\Users\admin\Desktop\kaoyan3.1.0.apk&#x27;</span>)<br><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-string">&quot;launch app...&quot;</span>)</span></span><br>package=<span class="hljs-string">&#x27;com.tal.kaoyan&#x27;</span><br>activity=<span class="hljs-string">&#x27;com.tal.kaoyan.ui.activity.SplashActivity&#x27;</span><br>runComponent=package+<span class="hljs-string">&#x27;/&#x27;</span>+activity<br><br>device<span class="hljs-selector-class">.startActivity</span>(component=runComponent)<br>mr<span class="hljs-selector-class">.sleep</span>(<span class="hljs-number">3</span>)<br><br><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-string">&quot;touch cancel button&quot;</span>)</span></span><br>device<span class="hljs-selector-class">.touch</span>(<span class="hljs-number">618</span>,<span class="hljs-number">895</span>,<span class="hljs-string">&#x27;DOWN_AND_UP&#x27;</span>)<br>mr<span class="hljs-selector-class">.sleep</span>(<span class="hljs-number">1</span>)<br><br><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-string">&quot;touch skip button&quot;</span>)</span></span><br>device<span class="hljs-selector-class">.touch</span>(<span class="hljs-number">804</span>,<span class="hljs-number">67</span>,<span class="hljs-string">&#x27;DOWN_AND_UP&#x27;</span>)<br>mr<span class="hljs-selector-class">.sleep</span>(<span class="hljs-number">1</span>)<br><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-string">&quot;input username and password&quot;</span>)</span></span><br>device<span class="hljs-selector-class">.touch</span>(<span class="hljs-number">57</span>,<span class="hljs-number">373</span>,<span class="hljs-string">&#x27;DOWN_AND_UP&#x27;</span>)<br>mr<span class="hljs-selector-class">.sleep</span>(<span class="hljs-number">2</span>)<br>device<span class="hljs-selector-class">.type</span>(账户)<br><br>device<span class="hljs-selector-class">.touch</span>(<span class="hljs-number">152</span>,<span class="hljs-number">480</span>,<span class="hljs-string">&#x27;DOWN_AND_UP&#x27;</span>)<br>mr<span class="hljs-selector-class">.sleep</span>(<span class="hljs-number">2</span>)<br>device<span class="hljs-selector-class">.type</span>(密码)<br>mr<span class="hljs-selector-class">.sleep</span>(<span class="hljs-number">2</span>)<br><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-string">&quot;touch login button&quot;</span>)</span></span><br>device<span class="hljs-selector-class">.touch</span>(<span class="hljs-number">331</span>,<span class="hljs-number">634</span>,<span class="hljs-string">&#x27;DOWN_AND_UP&#x27;</span>)<br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-string">&quot;takeSnapshot&quot;</span>)</span></span><br>screenshot=device<span class="hljs-selector-class">.takeSnapshot</span>()<br>screenshot<span class="hljs-selector-class">.writeToFile</span>(r<span class="hljs-string">&#x27;D:\monkeyrunner\kyb.png&#x27;</span>,<span class="hljs-string">&#x27;png&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>方法调用错误</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">AttributeError: <span class="hljs-keyword">type</span> <span class="hljs-keyword">object</span> <span class="hljs-string">&#x27;com.android.monkeyrunner.XXXXX&#x27;</span> has <span class="hljs-keyword">no</span> <span class="hljs-keyword">attribute</span> XXXXXX<br></code></pre></td></tr></table></figure>
+
+<p>检查调用的方法名是否写错，特别是注意区分大小写。</p>
+<p>字符编码错误</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">SyntaxError: Non-ASCII <span class="hljs-type">character</span> <span class="hljs-keyword">in</span> file <span class="hljs-string">&#x27;E:\monkeyrunner_script\kyb.py&#x27;</span>, but <span class="hljs-keyword">no</span> <span class="hljs-keyword">encoding</span> declared;<br></code></pre></td></tr></table></figure>
+
+<p>需要在代码顶部补充 # **- coding: utf-8 -**或者去掉代码中的中文字符</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Monkeyrunner/">Monkeyrunner</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/01/hello-world/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello handsome boy</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>blog of kk</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
