@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>Fiddler</title>
+    <link href="/2021/09/09/Fiddler/"/>
+    <url>/2021/09/09/Fiddler/</url>
+    
+    <content type="html"><![CDATA[<h4 id="一、Fiddler下载安装"><a href="#一、Fiddler下载安装" class="headerlink" title="一、Fiddler下载安装"></a>一、Fiddler下载安装</h4><p>下载地址：<a href="https://www.telerik.com/download/fiddler">Fiddler</a></p><h4 id="二、Fiddler工作原理"><a href="#二、Fiddler工作原理" class="headerlink" title="二、Fiddler工作原理"></a>二、Fiddler工作原理</h4><p><img src="https://pic.imgdb.cn/item/6139a73044eaada739973684.jpg"></p><p><strong>工作原理：</strong>Fiddler 作为一个代理，先是捕捉到客户端的 request 请求，然后再自己转发到服务 </p><p>器端，服务器接收到请求时，会返回一个响应 response ，Fiddler 还是会继续捕捉到服 </p><p>务器的响应请求，再来转发给客户端，简单来说， Fiddler 就是作为一个中间人。</p><p><strong>优缺点：</strong>只支持http、https、ftp、websocket数据流等相关写的的捕捉，无法监测或修改其他数据流，如 SMTP、POP3 协议(邮箱相关的协议)，无法处理请求和响应超过 2GB 的数 据，还有就是只支持 windows 平台，如果想要支持 mac 的话，建议下载 charles ，不 过很吃性能。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>接口测试</title>
     <link href="/2021/09/09/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/"/>
     <url>/2021/09/09/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/</url>
